@@ -1,5 +1,16 @@
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {firebase} from '@react-native-firebase/database';
+
+const reference = firebase
+  .app()
+  .database('https://pillmaster-9e7a7-default-rtdb.firebaseio.com/')
+  .ref('/medication/')
+  .once('value')
+  .then(snapshot => {
+    console.log('User data: ', snapshot.val());
+  });
+// console.log('hello world');
 
 const Screen1 = ({navigation, route}) => {
   const handleForwardPressed = () => {
